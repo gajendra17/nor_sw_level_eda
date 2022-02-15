@@ -1,0 +1,36 @@
+/////des/////
+
+// Code your design here
+module norr(ip1,ip2,op);
+  input ip1,ip2;
+  output op;
+  wire w0;
+  supply0 gnd;
+  supply1 vdd;
+  pmos a1(w0,vdd,ip1);
+  pmos a2(op,w0,ip2);
+  nmos a3(op,gnd,ip1);
+  nmos a4(op,gnd,ip2);
+endmodule
+
+/////tb//////
+
+// Code your testbench here
+// or browse Examples
+module test();
+  reg ip1,ip2;
+  wire op;
+  wire w0;
+  norr nor_tb(ip1,ip2,op);
+  initial $monitor("%b%b%b",ip1,ip2,op);
+  initial begin
+    ip1=1'b1;
+    ip2=1'b0;
+    #10
+    ip1=1'b0;
+    ip2=1'b0;
+    #10;
+    ip1=1'b0;
+    ip2=1'b0;
+  end
+endmodule
